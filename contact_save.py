@@ -3,7 +3,7 @@ class contacts:
 
     def __init__(self):
         self.list = list()
-        self.dataframe = pd.DataFrame(columns=["Name", "Contact"])
+        #self.dataframe = pd.DataFrame(columns=["Name", "Contact"])
     
     def add_contact(self, name, contact):
         """
@@ -15,12 +15,14 @@ class contacts:
         self.name = name
         self.contact = contact
 
+        # checks the instance or type of name, it has to be str type
         if isinstance(self.name, str) and self.name not in self.list:
             self.list.extend([self.name, self.contact])
             return self.list
         elif type(self.name) != str:
             print(f"Name {self.name} should be string datatype")
             return False
+        # checks if the name is inside the list, if there does forceful appending
         elif self.name in self.list:
             print(f"You already have a friend with the name {self.name}")
             force_add = input("Do you have two friends with the same name, enter (Y/N) ")
@@ -32,6 +34,7 @@ class contacts:
                 return "We suspect a duplicate data in your list, you have same person with same contact"
         else:
             return self.list
+    # Method for viewing or showing the diary
     def view_contact(self):
         return self.list
     # def contact_show(self):
